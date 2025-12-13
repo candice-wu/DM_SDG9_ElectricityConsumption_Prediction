@@ -68,7 +68,7 @@ class DataPreprocessor:
     def integrate_data(self):
         # Set Chinese font for matplotlib
         try:
-            font_path = '/Users/candicewu/Desktop/20241204 碩班/114 學年度碩專班申讀/10_作業報告/7935_資料探勘_蔡孟勳/Report/SDGs_PG_v2/fonts/Noto_Sans_TC/NotoSansTC-VariableFont_wght.ttf'
+            font_path = 'fonts/Noto_Sans_TC/NotoSansTC-VariableFont_wght.ttf'
             fm.fontManager.addfont(font_path)
             prop = fm.FontProperties(fname=font_path)
             plt.rcParams['font.family'] = prop.get_name()
