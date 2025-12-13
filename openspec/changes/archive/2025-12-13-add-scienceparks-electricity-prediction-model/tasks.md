@@ -1,0 +1,69 @@
+## 1. Implementation
+- [x] 1.1 Set up the Python environment and install necessary libraries.
+- [x] 1.2 Implement data preprocessing module:
+  - [x] 1.2.1 Data Cleaning (whitespace, missing values, types, label encoding)
+  - [x] 1.2.2 Data Integration (correlation, variance analysis, plots)
+    - [x] 1.2.2.1 Enhance conclusion sections for all plots on the Data Analysis page to include 'Method Definition' and 'Data Characteristics'.
+  - [x] 1.2.3 Data Transformation:
+    - [x] 1.2.3.1 Implement Raw Data Overview section on the Transformation page.
+    - [x] 1.2.3.2 Implement Normalization methods (Min-Max, Z-score, Decimal Scaling).
+    - [x] 1.2.3.3 Implement Discretization methods:
+        - [x] 1.2.3.3.1 Implement Equal-width Binning.
+        - [x] 1.2.3.3.2 Implement Equal-depth Binning.
+        - [x] 1.2.3.3.3 Implement Chi-Square (χ²) analysis.
+        - [x] 1.2.3.3.4 Implement Decision Tree analysis.
+        - [x] 1.2.3.3.5 Implement Clustering analysis.
+    - [x] 1.2.3.4 Implement Smoothing by Binning methods (Median, Means, Boundaries).
+  - [x] 1.2.4 Implement Data Reduction page and features:
+    - [x] 1.2.4.1 Create new page `pages/4_🔬_資料精簡.py` with a three-tab structure.
+    - [x] 1.2.4.2 Implement '維度縮減 (Dimensionality Reduction)' tab:
+        - [x] 1.2.4.2.1 Implement '視覺化降維 (Visual Reduction)' sub-tab:
+            - [x] 1.2.4.2.1.1 Implement PCA with n_components slider, scree plot, and 2D/3D scatter plot.
+            - [x] 1.2.4.2.1.2 Implement t-SNE with perplexity controls and 2D scatter plot.
+        - [x] 1.2.4.2.2 Implement '特徵排序與距離度量 (Feature Ranking & Distance Metrics)' sub-tab:
+            - [x] 1.2.4.2.2.1 Implement numerical feature ranking using Mutual Information.
+            - [x] 1.2.4.2.2.2 Implement numerical feature ranking using Information Gain (with discretized target).
+            - [x] 1.2.4.2.2.3 Implement categorical feature ranking using Information Gain.
+            - [x] 1.2.4.2.2.4 Implement the interactive numerical distance metrics explorer (Euclidean, Manhattan, Chebyshev, Minkowski).
+            - [x] 1.2.4.2.2.5 Implement Hamming Distance for categorical data.
+            - [x] 1.2.4.2.2.6 Implement session_state persistence for all analysis results in '特徵排序與距離度量' sub-tab, including a clear button.
+    - [x] 1.2.4.3 Implement '數量縮減 (Numerosity Reduction)' tab:
+        - [x] 1.2.4.3.1 Implement parametric reduction demo using regression models (Linear & Decision Tree).
+        - [x] 1.2.4.3.2 Implement non-parametric reduction demos (Histograms for bin counts).
+            - [x] 1.2.4.3.2.1 Add explanatory expander comparing Histogram, Equal-width, and Equal-depth binning methods.
+        - [x] 1.2.4.3.3 Implement clustering for data point reduction (centroids).
+        - [x] 1.2.4.3.4 Implement sampling methods demo (Random, Stratified, Systematic) with distribution comparison.
+    - [x] 1.2.4.4 Implement '資料壓縮 (Data Compression)' tab:
+        - [x] 1.2.4.4.1 Implement DWT for signal compression and visualization.
+        - [x] 1.2.4.4.2 Implement PCA for data reconstruction and compression analysis.
+- [x] 1.3 Implement model training module for electricity prediction:
+  - [x] 1.3.1 Train and save a Linear Regression model as the initial model.
+  - [x] 1.3.2 Train and integrate Decision Tree Regressor.
+  - [x] 1.3.3 Train and integrate HistGradientBoostingRegressor.
+  - [x] 1.3.4 Train and integrate Support Vector Regressor (SVR).
+  - [x] 1.3.5 Train and integrate LightGBM Regressor.
+- [x] 1.4 Implement visualization module for prediction results, model evaluation, and advanced data analysis.
+  - [x] 1.4.1 Create new page `pages/5_🎭_模型比較分析.py` for advanced model comparison.
+  - [x] 1.4.2 Implement 'Prediction vs. Actual' scatter plot with multi-model selection.
+  - [x] 1.4.3 Implement 'Residuals Plot' with multi-model selection.
+  - [x] 1.4.4 Implement 'Feature Importance' bar chart for tree-based and linear models.
+  - [x] 1.4.5 Implement 'Confusion Matrix' analysis for discretized prediction results.
+- [x] 1.5 Develop the Streamlit web application for the user interface:
+  - [x] 1.5.1 Create main application file `5114050013_DM_SDG9.py`.
+  - [x] 1.5.2 Implement file uploader for raw CSV data.
+  - [x] 1.5.3 Display raw and cleaned dataframes and their info.
+    - [x] 1.5.3.1 Change "形狀" to "維度" for DataFrame shape display.
+  - [x] 1.5.4 Create a sidebar for configuration.
+  - [x] 1.5.5 Implement cascading dropdowns for location selection (Science Park, Sub-park).
+  - [x] 1.5.6 Develop the UI for prediction, allowing users to select year/month and input temperature if needed.
+  - [x] 1.5.7 Implement the prediction vs. actual feedback mechanism with conditional messages and effects.
+  - [x] 1.5.8 Adjust header font size on Analysis page to prevent wrapping.
+  - [x] 1.5.9 Update prediction page UI to support multiple model selection.
+  - [ ] 1.5.10 (Future Enhancement) Address the known issue where sidebar state on the prediction page resets upon switching pages due to Streamlit's page rerun mechanism.
+- [x] 1.6 Integrate data preprocessing, model training, and visualization components into the Streamlit application.
+- [x] 1.7 Implement unit tests for data processing and model functions.
+- [x] 1.8 Ensure model performance evaluation using R-squared, RMSE, and MAE is displayed on the prediction page.
+- [ ] 1.9 (Future Enhancement) Ensure code adheres to PEP 8 style guide and includes necessary comments.
+- [x] 1.10 Generate `requirements.txt` based on the project's tech stack.
+- [x] 1.11 Update `README.md` with project description, CRISP-DM architecture, and Streamlit demo link placeholder.
+- [x] 1.12 (Phase 2) Implement Association Rule Mining (Apriori) on Data Analysis Page.
