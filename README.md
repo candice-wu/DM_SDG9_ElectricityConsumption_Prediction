@@ -2,7 +2,7 @@
 
 本專案旨在建立一個全面的數據分析平台，用於預測台灣各科學園區的用電量，並提供深入的數據洞察。系統利用多種機器學習演算法與數據探勘技術，透過一個互動式的 Streamlit 網站介面，將複雜的數據分析與預測過程視覺化，使其易於理解與操作。
 
-**[前往 Streamlit Demo 網站](https://your-streamlit-app-link.streamlit.app/)**  *(<- 這是一個佔位符，待您部署後請替換成實際連結)*
+**[前往 Streamlit Demo 網站](https://sdg9-electricity-consumption-prediction.streamlit.app)**
 
 ---
 
@@ -103,5 +103,13 @@ streamlit run 5114050013_DM_SDG9.py
 4.  **部署！**
     點擊「Deploy!」。Streamlit 將會開始建置您的應用程式，這可能需要幾分鐘的時間。
 
-5.  **更新 Demo 連結**
-    部署成功後，您會得到一個公開的網址（例如 `https://your-app-name.streamlit.app`）。請記得回到本 `README.md` 檔案，將最上方的佔位符連結替換為您部署完成的實際網址。
+5.  **取得應用程式網址**
+    部署成功後，您會得到一個公開的網址。請使用此網址更新本文件最上方的「前往 Streamlit Demo 網站」連結。
+
+---
+
+📝 **授權聲明 Authorization**
+
+This project is for educational purposes only.
+
+Last updated: 2025-12-13
