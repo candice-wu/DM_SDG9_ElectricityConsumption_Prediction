@@ -6,6 +6,7 @@ import colorsys
 import numpy as np
 from scipy.stats import chi2_contingency
 from sklearn.tree import DecisionTreeClassifier
+from src.ui_components import render_app_info, render_data_status
 
 st.set_page_config(page_title="資料轉換", page_icon="♻️", layout="wide")
 
@@ -244,6 +245,10 @@ def generate_smoothing_conclusion(method_name, column_name, bins):
 if 'cleaned_df' not in st.session_state or 'preprocessor' not in st.session_state:
     st.warning("⬅️ 請先至「📄 資料探索與清理」頁面上傳並清理資料" )
     st.stop()
+
+render_app_info()
+cleaned_df = st.session_state['cleaned_df']
+render_data_status(cleaned_df)
 
 # --- Raw Data Overview Section ---
 st.header("🏀 原始資料概覽 (Raw Data Overview)")

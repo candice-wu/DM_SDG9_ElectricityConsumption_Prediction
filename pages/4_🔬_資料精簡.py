@@ -9,6 +9,7 @@ import io
 import base64
 import pywt
 from src.data_preprocessing import DataPreprocessor
+from src.ui_components import render_app_info, render_data_status
 
 # Helper function for Scree Plot
 def plot_scree_plot(pca_model):
@@ -232,9 +233,12 @@ if 'cleaned_df' not in st.session_state or 'preprocessor' not in st.session_stat
     st.warning("⬅️ 請先至「📄 資料探索與清理」頁面上傳並清理資料" )
     st.stop()
 
+render_app_info()
+cleaned_df = st.session_state['cleaned_df']
+render_data_status(cleaned_df)
+
 original_df = st.session_state['df']
 preprocessor = st.session_state['preprocessor']
-cleaned_df = st.session_state['cleaned_df'] # Assuming preprocessor stores cleaned_df as self.df or returns it. 
 
 st.markdown(textwrap.dedent("""
     <div class="info-box">

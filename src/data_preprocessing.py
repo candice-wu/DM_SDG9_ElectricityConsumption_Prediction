@@ -69,9 +69,14 @@ class DataPreprocessor:
         # Set Chinese font for matplotlib
         try:
             font_path = 'fonts/Noto_Sans_TC/NotoSansTC-VariableFont_wght.ttf'
-            fm.fontManager.addfont(font_path)
-            prop = fm.FontProperties(fname=font_path)
-            plt.rcParams['font.family'] = prop.get_name()
+            font_name = "Noto Sans TC"
+
+            # Check if the font is already registered, if not, add it and rebuild cache
+            if font_name not in [f.name for f in fm.fontManager.ttflist]:
+                fm.fontManager.addfont(font_path)
+                fm._load_fontmanager(try_read_cache=False)  # Force cache rebuild
+
+            plt.rcParams['font.family'] = font_name
             plt.rcParams['axes.unicode_minus'] = False
         except Exception as e:
             print(f"Cannot set Chinese font: {e}")

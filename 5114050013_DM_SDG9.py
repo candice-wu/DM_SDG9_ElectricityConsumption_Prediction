@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from src.data_preprocessing import DataPreprocessor
+from src.ui_components import render_app_info, render_data_status
 import io
 
 st.set_page_config(page_title="資料探索與清理", page_icon="📄", layout="wide")
@@ -53,6 +54,9 @@ def main():
             }
         </style>
     """, unsafe_allow_html=True)
+    
+    # Render the static info sections in the sidebar
+    render_app_info()
 
     st.title('📄 資料探索與清理 (Data Exploration & Cleaning)')
     st.info("ℹ️ 此頁面提供上傳資料、進行資料清理，並比較清理前後的資料差異")
@@ -81,6 +85,8 @@ def main():
 
     # If data has been loaded into session state at least once, display it
     if 'data_loaded' in st.session_state and st.session_state['data_loaded']:
+        # Render the dynamic data status section in the sidebar
+        render_data_status(st.session_state['cleaned_df'])
         st.markdown("---")
         display_data_section(st.session_state['df'], st.session_state['cleaned_df'])
 

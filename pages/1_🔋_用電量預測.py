@@ -5,6 +5,7 @@ import datetime
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from src.data_preprocessing import DataPreprocessor # Import DataPreprocessor
+from src.ui_components import render_app_info
 import plotly.graph_objects as go # Added for gauge chart
 
 # --- Page Configuration ---
@@ -199,6 +200,10 @@ def reset_prediction_form(original_df):
 
 # --- Main App ---
 st.title("🔋 用電量預測 (Electricity Consumption Prediction)")
+
+# Render the static info sections in the sidebar
+render_app_info()
+
 st.info("""
         此頁面讓您設定參數，可對特定科學園區的未來用電量進行預測
 

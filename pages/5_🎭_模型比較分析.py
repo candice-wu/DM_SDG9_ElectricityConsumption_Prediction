@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import altair as alt
 from src.data_preprocessing import DataPreprocessor
+from src.ui_components import render_app_info, render_data_status
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error, confusion_matrix, accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.inspection import permutation_importance
@@ -35,15 +36,6 @@ def get_styled_text(text):
 
 # --- Main App ---
 st.title("🎭 模型比較與進階分析")
-
-st.info("""
-此頁面提供一個互動式儀表板，用於深入比較和診斷在「用電量預測」頁面上訓練的各個迴歸模型之效能與行為
-- **預測值 vs. 實際值圖**：直觀地評估模型的整體準確性和潛在偏差
-- **殘差圖**：用於診斷模型的系統性錯誤，理想的殘差應隨機分佈
-- **特徵重要性圖**：揭示模型在進行預測時最依賴哪些特徵
-- **混淆矩陣分析**：將連續預測值轉換為級距，評估模型在各級距上的分類準確度
-""")
-
 
 # --- Data Loading and Caching ---
 @st.cache_data
@@ -83,6 +75,18 @@ cleaned_df, preprocessor, original_df = load_data()
 if cleaned_df is None or preprocessor is None:
     st.warning("⬅️ 請先至「📄 資料探索與清理」頁面上傳並清理資料")
     st.stop()
+
+# Render sidebar elements
+render_app_info()
+render_data_status(cleaned_df)
+
+st.info("""
+此頁面提供一個互動式儀表板，用於深入比較和診斷在「用電量預測」頁面上訓練的各個迴歸模型之效能與行為
+- **預測值 vs. 實際值圖**：直觀地評估模型的整體準確性和潛在偏差
+- **殘差圖**：用於診斷模型的系統性錯誤，理想的殘差應隨機分佈
+- **特徵重要性圖**：揭示模型在進行預測時最依賴哪些特徵
+- **混淆矩陣分析**：將連續預測值轉換為級距，評估模型在各級距上的分類準確度
+""")
 
 X_full, y_full, feature_names, _ = preprocessor.get_prediction_data(cleaned_df)
 X_train, X_test, y_train, y_test = train_test_split(

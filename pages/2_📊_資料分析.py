@@ -3,6 +3,7 @@ import base64
 import pandas as pd
 import textwrap
 from src.data_preprocessing import DataPreprocessor
+from src.ui_components import render_app_info, render_data_status
 from mlxtend.frequent_patterns import apriori, association_rules
 from mlxtend.preprocessing import TransactionEncoder
 
@@ -114,11 +115,15 @@ if 'cleaned_df' not in st.session_state or 'preprocessor' not in st.session_stat
     st.warning("⬅️ 請先至「📄 資料探索與清理」頁面上傳並清理資料")
     st.stop()
 
+# Render sidebar elements
+render_app_info()
+cleaned_df = st.session_state['cleaned_df']
+render_data_status(cleaned_df)
+
 st.info("此頁面提供多種資料分析方法，請在下方選擇分頁進行探索。", icon="ℹ️")
 
 # Get preprocessor and original cleaned df
 preprocessor = st.session_state['preprocessor']
-cleaned_df = st.session_state['cleaned_df']
 
 # Create tabs
 tab1, tab2 = st.tabs(["📊 探索式資料分析 (Exploratory Data Analysis)", "🧺 關聯規則分析 (Association Rule Mining)"])
