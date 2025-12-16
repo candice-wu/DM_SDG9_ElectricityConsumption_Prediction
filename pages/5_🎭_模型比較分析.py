@@ -38,7 +38,6 @@ def get_styled_text(text):
 st.title("🎭 模型比較與進階分析")
 
 # --- Data Loading and Caching ---
-@st.cache_data
 def load_data():
     if 'data_loaded' not in st.session_state or not st.session_state.data_loaded:
         return None, None, None
